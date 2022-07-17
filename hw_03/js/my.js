@@ -235,8 +235,12 @@ if (isLeapYear){
     }
 }
 
-if (isLeapYear) {
-    alert(`User Bio: ${firstName} ${secondName}, ${age} years old (leap year), ${zodiac}`)
-} else {
-    alert(`User Bio: ${firstName} ${secondName}, ${age} years old, ${zodiac}`)
-}
+// if (isLeapYear) {
+//     alert(`User Bio: ${firstName} ${secondName}, ${age} years old (leap year), ${zodiac}`)
+// } else {
+//     alert(`User Bio: ${firstName} ${secondName}, ${age} years old, ${zodiac}`)
+// }
+
+// alert("User Bio: " + firstName + " " + secondName + "," + age + " years old" + (isLeapYear ? " (leap year), " : "") + zodiac);
+
+alert(`User Bio: ${firstName} ${secondName}, ${age} years old ${isLeapYear ? "(leap year)," : ""} ${zodiac}`);
