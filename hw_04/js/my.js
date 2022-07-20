@@ -6,7 +6,7 @@ const operationId = Number(prompt(`Choose operation:
 4. Get amount of letters`));
 
 let symbolIndex;
-let smile = ["😂", "😈", "💛", "💙", "🌤", "😃", "🎉", "🥳", "😳", "🙈"];
+const smile = ["😂", "😈", "💛", "💙", "🌤", "😃", "🎉", "🥳", "😳", "🙈"];
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
