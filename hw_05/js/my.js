@@ -7,6 +7,7 @@ if (START) {
     for (let i = 1; i <= wordCount; i++){
         let importantWord,
             wordHasNumber;
+
         do {
             importantWord = prompt(`Enter a word #${i}:`);
 
