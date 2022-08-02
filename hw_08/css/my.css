@@ -1,0 +1,15 @@
+.round {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 20px 20px 15px;
+}
+
+.text {
+    font-family: 'Quicksand', sans-serif;
+    font-size: large;
+    width: 75px;
+    display: inline-block;
+    text-align: center;
+}
