@@ -12,11 +12,14 @@ const sports = [
     ['bicyclist','🚴‍']
 ];
 
-const summer_sports = sports.slice(5, 10);
+const summer_sports = sports.slice(5, 11);
 
-const winter_sports = sports.slice(0, 4);
+const winter_sports = sports.slice(0, 5);
 
-const fruits = summer_sports.slice(2, 4).concat(winter_sports.slice(2, 3));
+const fruits = winter_sports.slice(2, 3).concat(summer_sports.slice(2, 4));
+
+summer_sports.splice(2, 2);
+winter_sports.splice(2, 1);
 
 const table = [];
 
