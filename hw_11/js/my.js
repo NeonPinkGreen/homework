@@ -8,7 +8,7 @@ const products = [
 const getPrice = (products, seasonFunc) => {
     const copiedProducts = [...products];
     let sum = 0;
-debugger
+
     if (seasonFunc) {
         switch(seasonFunc){
             case 'summerValue':
@@ -27,7 +27,8 @@ debugger
     } else {
         for (let i = 0; i < copiedProducts.length; i++) {
             sum += copiedProducts[i][1];
-        }
+        }   return sum;
+
     }
 }
 
