@@ -5,20 +5,58 @@ const users = [
     ["tyson","green",1,["book", "pen"]],
 ];
 
-const newArrayForEach = JSON.parse(JSON.stringify(users));
+const arrayForEach = JSON.parse(JSON.stringify(users));
 
-newArrayForEach.forEach((item, i, arr) => {
+arrayForEach.forEach((item, i, arr) => {
     arr[i][0] += `!`;
 })
 
-const newArrayMap = users.map((item, i, arr) => {
+let arrayMap = JSON.parse(JSON.stringify(users));
+
+arrayMap = arrayMap.map((item, i, arr) => {
     item[0] += `?`;
     return arr[i];
 });
 
-const newArrayFiltered = users.filter(item => item[1] === `red`);
+const arrayFiltered = users.filter(item => item[1] === `red`);
+
+arrayForEach.forEach((item, i, arr) => {
+    arr[i][0] += `!`;
+});
 
 console.log(users);
-console.log(newArrayForEach);
-console.log(newArrayMap);
-console.log(newArrayFiltered);
+console.log(arrayForEach);
+console.log(arrayMap);
+console.log(arrayFiltered);
+
+const tHead = [
+    ["Name"],
+    ["Command"],
+    ["Score"],
+    ["Data"],
+];
+
+let printArray = [];
+let totalScore = 0;
+
+arrayFiltered.map((item, i, arr) => {
+    printArray.push(item.slice(0, 3).join(`</td><td>`).concat(`</td><td>${arr[i][3].join(`; `)}`));
+    totalScore += item[2];
+});
+
+
+document.write(`
+<table>
+    <thead>
+        <tr>
+            ${tHead.map(item => `<th>${item}</th>`).join(``)}
+        </tr>
+    </thead>
+    <tbody>
+        ${printArray.map(item => `<tr><td>${item}</td></tr>`).join(``)}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">Total score: ${totalScore}</td>
+        </tr>
+    </tfoot>`);
