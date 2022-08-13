@@ -9,22 +9,12 @@ const getPrice = (products, seasonFunc) => {
     const copiedProducts = [...products];
     let sum = 0;
 
-    if (seasonFunc) {
-        switch(seasonFunc){
-            case 'summerValue':
-                for (let i = 0; i < copiedProducts.length; i++) {
-                    summerValue(copiedProducts[i][1]);
-                }
-                return sum;
-
-            case 'winterValue':
-                for (let i = 0; i < copiedProducts.length; i++) {
-                    winterValue(copiedProducts[i][1]);
-                    sum += copiedProducts[i][1];
-                }
-                return sum;
-        }
-    } else {
+    if(typeof seasonFunc === 'function') {
+        for (let i = 0; i < copiedProducts.length; i++) {
+            sum += seasonFunc(copiedProducts[i][1]);
+        } return sum;
+    }
+    else {
         for (let i = 0; i < copiedProducts.length; i++) {
             sum += copiedProducts[i][1];
         }   return sum;
