@@ -6,21 +6,31 @@ const products = [
 ]
 
 const getPrice = (products, seasonFunc) => {
-    const copiedProducts = [...products];
-    let sum = 0;
-
-    if(typeof seasonFunc === 'function') {
-        for (let i = 0; i < copiedProducts.length; i++) {
-            sum += seasonFunc(copiedProducts[i][1]);
-        } return sum;
+    products = JSON.parse(JSON.stringify(products));
+    let suma = 0;
+    for (let i = 0; i < products.length;i++) {
+        suma += typeof seasonFunc === `function`
+            ? seasonFunc(products[i][1])
+            : products[i][1];
     }
-    else {
-        for (let i = 0; i < copiedProducts.length; i++) {
-            sum += copiedProducts[i][1];
-        }   return sum;
-
-    }
+    return suma;
 }
+// const getPrice = (products, seasonFunc) => {
+//     const copiedProducts = [...products];
+//     let sum = 0;
+//
+//     if(typeof seasonFunc === 'function') {
+//         for (let i = 0; i < copiedProducts.length; i++) {
+//             sum += seasonFunc(copiedProducts[i][1]);
+//         } return sum;
+//     }
+//     else {
+//         for (let i = 0; i < copiedProducts.length; i++) {
+//             sum += copiedProducts[i][1];
+//         }   return sum;
+//
+//     }
+// }
 
 function summerValue(value){
     return value*0.8;
