@@ -16,13 +16,9 @@ const getPrice = (products, seasonFunc) => {
     return sum;
 }
 
-function summerValue(value){
-    return value*0.8;
-}
+const summerValue = value => value*0.8;
 
-function winterValue(value){
-    return value*2;
-}
+const winterValue = value => value*2;
 
 console.log(getPrice(products, summerValue));
 
