@@ -97,6 +97,14 @@ const users = [
 	}
 ];
 
+const satisfactory = score => {
+	for (let key in gradation){
+		if (score < key) {
+			return gradation[key];
+		}
+	}
+}
+
 class User{
 	constructor(user){
 		Object.assign(this, user);
@@ -125,7 +133,7 @@ class User{
 		const coursesRender = this.courses
 			.map(course => `<p class="user__courses--course ${this.role}">
 								${course.title}
-								<span class="satisfactory">${course.mark}</span>
+								<span class="satisfactory">${satisfactory(course.score)}</span>
 							</p>`)
 			.join(``);
 
@@ -148,8 +156,8 @@ class Lector extends User{
 		const coursesRender = this.courses
 			.map(course => `<div class="user__courses--course ${this.role}">
                     <p>Title: <b>${course.title}</b></p>
-                    <p>Lector's score: <span class="very-good">${course.score}</span></p>
-                    <p>Average student's score: <span class="very-good">${course.studentsScore}</span></p>
+                    <p>Lector's score: <span class="very-good">${satisfactory(course.score)}</span></p>
+                    <p>Average student's score: <span class="very-good">${satisfactory(course.score)}</span></p>
                 </div>`)
 			.join(``);
 
@@ -166,7 +174,7 @@ class Admin extends User{
 		const coursesRender = this.courses
 			.map(course => `<div class="user__courses--course ${this.role}">
                     <p>Title: <b>${course.title}</b></p>
-                    <p>Admin's score: <span class="satisfactory">${course.score}</span></p>
+                    <p>Admin's score: <span class="satisfactory">${satisfactory(course.score)}</span></p>
                     <p>Lector: <b>${course.lector}</b></p>
                 </div>`)
 			.join(``);
