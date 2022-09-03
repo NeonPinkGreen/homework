@@ -3,12 +3,21 @@ body{
     width: 100vw;
 }
 
+li{
+    background-color: white;
+    transition: 1s;
+}
+
 ul{
-    margin: 10px
+    margin: 10px;
 }
 
 .first{
-    border: 2px solid crimson;
+    background-color: crimson;
+}
+
+.last{
+    background-color: lime;
 }
 
 #dog{

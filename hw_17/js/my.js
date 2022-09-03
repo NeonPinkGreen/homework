@@ -1,9 +1,38 @@
 const root = document.querySelector(`ul#root`);
 
-const setFirstItemClassByLevel = (level, ul) => {
-    // let LiFirst = ul.querySelector(`li:first-of-type`);
-    // LiFirst.classList.add(`first`);
-    const Lis = ul.querySelectorAll(`li`)
+const setLastItemClassByLevel = (ul) => {
+
+    let LiLast = ul.querySelector(`li:last-of-type`);
+    LiLast.classList.add(`last`);
+
+    const Lis = [...ul.children];
+
+    Lis.forEach(li => {
+        let InnerUls = [...li.children];
+
+        InnerUls.forEach(innerUl => setLastItemClassByLevel(innerUl));
+    })
+
 }
 
-setFirstItemClassByLevel(2, root);
+const setFirstItemClassByLevel = (ul, level) => {
+    level--;
+
+    if (level > 0){
+        const Lis = [...ul.children];
+
+        Lis.forEach(li => {
+            let InnerUls = [...li.children];
+
+            InnerUls.forEach(innerUl => setFirstItemClassByLevel(innerUl, level));
+        })
+        }else {
+        let LiFirst = ul.querySelector(`li:first-of-type`);
+        LiFirst.classList.add(`first`);
+    }
+
+
+}
+
+setTimeout(() => setFirstItemClassByLevel(root, 2), 2000);
+setTimeout(() => setLastItemClassByLevel(root), 4000);
