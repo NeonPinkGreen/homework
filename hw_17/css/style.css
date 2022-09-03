@@ -1,0 +1,29 @@
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+ul{
+    margin: 10px
+}
+
+.first{
+    border: 2px solid crimson;
+}
+
+#dog{
+    background: green;
+}
+
+.block{
+    width: 100px;
+    height: 100px;
+    background: crimson;
+    display: inline-block;
+}
+
+#mySpan{
+    position: relative;
+    background: #3f51b5;
+    transition: 1s;
+}
