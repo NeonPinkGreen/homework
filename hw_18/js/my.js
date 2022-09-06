@@ -1,4 +1,3 @@
-const body = document.querySelector(`body`);
 const block = document.querySelector(`div`);
 
 const getRandomInt = (max) => {
