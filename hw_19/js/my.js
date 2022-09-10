@@ -43,5 +43,3 @@ const EVENTS = {
 document.addEventListener(`keydown`, event => {
     EVENTS[event.keyCode](block);
 })
-
-// document.addEventListener(`keydown`, event => console.log(event));
