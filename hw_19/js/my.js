@@ -26,22 +26,31 @@ const movingDown = block => {
     block.style.transition = `0.1s`;
 }
 
+const bumsAlert = () => {
+    block.innerHTML += 'БЕМС';
+    setTimeout(() => block.innerHTML = '', 2000);
+}
+
 const bounceOut = (direction) => {
     switch (direction){
         case `right`: block.style.left = parseInt(block.style.left) - 20 + `px`;
         block.style.transition = `0.8s`;
+        bumsAlert();
         break;
 
         case `left`: block.style.left = parseInt(block.style.left) + 20 + `px`;
         block.style.transition = `0.8s`;
+        bumsAlert();
         break;
 
         case `top`: block.style.top = parseInt(block.style.top) + 20 + `px`;
         block.style.transition = `0.8s`;
+        bumsAlert();
         break;
 
         case `bottom`: block.style.top = parseInt(block.style.top) - 20 + `px`;
         block.style.transition = `0.8s`;
+        bumsAlert();
         break;
     }
 
@@ -57,15 +66,28 @@ const checkObstacle = (block) => {
 
 }
 
+const jumpUp = block => {
+    block.style.top = parseInt(block.style.top) - 10 + `px`;
+    block.style.transition = `0.5s`;
+    setTimeout(() => block.style.top = parseInt(block.style.top) + 10 + `px`, 500);
+}
+
+const sitDown = () => {
+
+}
+
 const EVENTS = {
     37: block => movingLeft(block),
     38: block => movingUp(block),
     39: block => movingRight(block),
-    40: block => movingDown(block)
+    40: block => movingDown(block),
+    32: block => jumpUp(block),
+    17: block => sitDown(block)
 }
 
 document.addEventListener(`keydown`, event => {
     EVENTS[event.keyCode](block);
     checkObstacle(block);
-})
+});
 
+// document.addEventListener(`keydown`, event => console.log(event));
