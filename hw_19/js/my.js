@@ -6,16 +6,6 @@ const setCenterPosition = () => {
 }
 setCenterPosition();
 
-// const movingBlock = event => {
-//     let currentBlockLeft = parseInt(block.style.left),
-//         currentBlockTop = parseInt(block.style.top);
-//
-//     block.style.left = currentBlockLeft + 10 + `px`;
-//     block.style.top = currentBlockTop + 10 + `px`;
-//
-//     document.removeEventListener(`mouseup`, movingBlock);
-// };
-
 const movingRight = block => {
     block.style.left = parseInt(block.style.left) + 10 + `px`;
 }
