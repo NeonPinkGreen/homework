@@ -76,13 +76,16 @@ const sitDown = block => {
     let heightBefore = block.style.height;
     let widthBefore = block.style.width;
     let topBefore = block.style.top;
+    let leftBefore = block.style.left;
     block.style.height = parseInt(block.offsetHeight) * 0.6 + `px`;
     block.style.width = parseInt(block.offsetWidth) * 1.25 + `px`;
     block.style.top = parseInt(block.style.top) + (parseInt(block.offsetHeight) * 0.4) + `px`;
+    block.style.left = parseInt(block.style.left) - (parseInt(block.offsetWidth) * 0.125) + `px`;
     setTimeout(() => {
         block.style.height = heightBefore;
         block.style.width = widthBefore;
         block.style.top = topBefore;
+        block.style.left = leftBefore;
     }, 500);
 }
 
@@ -99,5 +102,3 @@ document.addEventListener(`keydown`, event => {
     EVENTS[event.keyCode] && EVENTS[event.keyCode](block);
     checkObstacle(block);
 });
-
-// document.addEventListener(`keydown`, event => console.log(event));
