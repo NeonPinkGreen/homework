@@ -72,8 +72,18 @@ const jumpUp = block => {
     setTimeout(() => block.style.top = parseInt(block.style.top) + 10 + `px`, 500);
 }
 
-const sitDown = () => {
-
+const sitDown = block => {
+    let heightBefore = block.style.height;
+    let widthBefore = block.style.width;
+    let topBefore = block.style.top;
+    block.style.height = parseInt(block.offsetHeight) * 0.6 + `px`;
+    block.style.width = parseInt(block.offsetWidth) * 1.25 + `px`;
+    block.style.top = parseInt(block.style.top) + (parseInt(block.offsetHeight) * 0.4) + `px`;
+    setTimeout(() => {
+        block.style.height = heightBefore;
+        block.style.width = widthBefore;
+        block.style.top = topBefore;
+    }, 500);
 }
 
 const EVENTS = {
@@ -82,11 +92,11 @@ const EVENTS = {
     39: block => movingRight(block),
     40: block => movingDown(block),
     32: block => jumpUp(block),
-    17: block => sitDown(block)
+    17: block => sitDown(block),
 }
 
 document.addEventListener(`keydown`, event => {
-    EVENTS[event.keyCode](block);
+    EVENTS[event.keyCode] && EVENTS[event.keyCode](block);
     checkObstacle(block);
 });
 
