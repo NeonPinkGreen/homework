@@ -27,7 +27,7 @@ const movingDown = block => {
 }
 
 const bumsAlert = () => {
-    block.innerHTML += 'БЕМС';
+    block.innerHTML = 'БЕМС';
     setTimeout(() => block.innerHTML = '', 2000);
 }
 
