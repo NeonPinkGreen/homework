@@ -12,3 +12,15 @@ body{
     height: 100vh;
     width: 100vw;
 }
+
+.circle {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.rectangle {
+    height: 100px;
+    width: 150px;
+}
