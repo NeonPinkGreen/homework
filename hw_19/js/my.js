@@ -73,10 +73,10 @@ const jumpUp = block => {
 }
 
 const sitDown = block => {
-    let heightBefore = block.style.height;
-    let widthBefore = block.style.width;
-    let topBefore = block.style.top;
-    let leftBefore = block.style.left;
+    const heightBefore = block.style.height;
+    const widthBefore = block.style.width;
+    const topBefore = block.style.top;
+    const leftBefore = block.style.left;
     block.style.height = parseInt(block.offsetHeight) * 0.6 + `px`;
     block.style.width = parseInt(block.offsetWidth) * 1.25 + `px`;
     block.style.top = parseInt(block.style.top) + (parseInt(block.offsetHeight) * 0.4) + `px`;
