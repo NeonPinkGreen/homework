@@ -5,6 +5,7 @@ const figure = document.querySelector(`#figure`);
 
 settingsForm.addEventListener(`submit`, e =>{
     e.preventDefault();
+    element.removeAttribute('class');
     element.classList.add(`${figure.value}`);
     element.style.background = elementColor.value;
 })
