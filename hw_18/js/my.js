@@ -9,11 +9,12 @@ const getRandomColor = () =>  {
 }
 
 const getMaxLeft = () => {
-    return document.body.clientWidth - 100;
-}
 
+return document.body.clientWidth - block.offsetWidth;
+}
 const getMaxTop = () => {
-    return document.body.clientHeight - 100;
+    return document.body.clientHeight - block.offsetHeight;
+
 }
 
 const setBgColor = (color) => {
