@@ -1,6 +1,4 @@
 #element{
-    width: 100px;
-    height: 100px;
     background: #e5e5e5;
     position: relative;
     left: 0;
@@ -23,4 +21,9 @@ body{
 .rectangle {
     height: 100px;
     width: 150px;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
 }
