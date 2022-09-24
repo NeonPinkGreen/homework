@@ -1,0 +1,28 @@
+#element{
+    position: relative;
+    left: 0;
+    top: 0;
+    transition: 0.5s;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+.circle {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.rectangle {
+    height: 100px;
+    width: 150px;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+}
