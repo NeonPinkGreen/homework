@@ -29,3 +29,26 @@ const bankData = {
     }
 }
 
+const getMoney = new Promise((resolve, reject) => {
+    let request = confirm(`Подивитися баланс на карті?`);
+    request ? resolve() : reject();
+});
+
+getMoney
+    .then(
+        function(){
+            let userCur;
+            do {
+                userCur = prompt(`Введіть валюту:`);
+            } while (!userData.hasOwnProperty(userCur));
+            console.log(`Баланс становить: ${userData[`${userCur}`]} ${userCur}`);
+        },
+
+        function(){
+            let userCur;
+            do {
+                userCur = prompt(`Введіть назву валюти, в якій ви бажаєте зняти кошти:`);
+            } while (!userData.hasOwnProperty(userCur));
+        }
+
+    )
