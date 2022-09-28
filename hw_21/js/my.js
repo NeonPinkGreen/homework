@@ -46,18 +46,29 @@ getMoney
 
         function(){
             let userCur;
+
             let amount;
+
             do {
                 userCur = prompt(`Введіть назву валюти, в якій ви бажаєте зняти кошти:`);
             } while ((!bankData.hasOwnProperty(userCur)) || (!userData.hasOwnProperty(userCur)));
+
             let cashAvailable = bankData[userCur].max > userData[userCur];
+
             amount = prompt(`Введіть сумму зняття:`);
-            if ((amount > bankData[userCur].max) || (amount > !userData[userCur])){
-                console.log(`Введена сума більша за доступну. Максимальна сума зняття: ${cashAvailable ? bankData[userCur].max : userData[userCur]}`);
+
+            if ((amount > bankData[userCur].max) || (amount > userData[userCur])){
+                console.log(`Введена сума більша за доступну. Максимальна сума зняття: ${cashAvailable ? userData[userCur] : bankData[userCur].max} ${userCur}`);
             } else if ((amount < bankData[userCur].min)){
-                console.log(`Введена сума менша за доступну. Мінімальна сума зняття: ${bankData[userCur].min}`);
+                console.log(`Введена сума менша за доступну. Мінімальна сума зняття: ${bankData[userCur].min} ${userCur}`);
+            } else {
+                console.log(`От Ваші гроші ${amount} ${userCur} ${bankData[userCur].img}`);
             }
 
         }
+    ).then(
+        function (){
+            console.log('Дякую, гарного дня 😊');
 
-    )
+        }
+)
