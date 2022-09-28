@@ -46,9 +46,18 @@ getMoney
 
         function(){
             let userCur;
+            let amount;
             do {
                 userCur = prompt(`Введіть назву валюти, в якій ви бажаєте зняти кошти:`);
-            } while (!userData.hasOwnProperty(userCur));
+            } while ((!bankData.hasOwnProperty(userCur)) || (!userData.hasOwnProperty(userCur)));
+            let cashAvailable = bankData[userCur].max > userData[userCur];
+            amount = prompt(`Введіть сумму зняття:`);
+            if ((amount > bankData[userCur].max) || (amount > !userData[userCur])){
+                console.log(`Введена сума більша за доступну. Максимальна сума зняття: ${cashAvailable ? bankData[userCur].max : userData[userCur]}`);
+            } else if ((amount < bankData[userCur].min)){
+                console.log(`Введена сума менша за доступну. Мінімальна сума зняття: ${bankData[userCur].min}`);
+            }
+
         }
 
     )
