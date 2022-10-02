@@ -37,14 +37,24 @@ const generateTable = async (url, table) => {
     for (let element of data) {
         let row = tBody.insertRow();
         for (let key in element) {
-            let cell = row.insertCell();
-            let text = document.createTextNode(element[key]);
-            cell.appendChild(text);
+            if (key === `favourite`){
+                let cell = row.insertCell();
+                let checkbox = document.createElement("input");
+                checkbox.type = 'checkbox';
+                checkbox.checked = element[key];
+                cell.appendChild(checkbox);
+            } else {
+                let cell = row.insertCell();
+                let text = document.createTextNode(element[key]);
+                cell.appendChild(text);
+            }
+
         }
     }
 }
 
 let table = document.querySelector(`table`);
 
-generateTable(API + `/heroes`, table);
+generateTable(API+`/heroes`, table);
 generateTableHead(API+`/heroes`, table);
+
