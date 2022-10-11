@@ -14,7 +14,7 @@ $.ajax({
         })
         $.each(colors, function(i, colors){
             $(`span`).click(function (){
-                $(`span`).attr(`src`, `https://mc-astro.github.io/tesla-roadster-colors/img/${color.img}.jpg`)
+                $car.attr(`src`, `https://mc-astro.github.io/tesla-roadster-colors/img/${color.img}.jpg`)
             })
         })
     },
