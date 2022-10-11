@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Homework 24</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<img id="car" src="https://mc-astro.github.io/tesla-roadster-colors/img/black.jpg" id="car">
-<span style="white-space: pre-line"></span>
-<div id="colors"></div>
+<section class="container">
+    <img
+            id="carImg"
+            class="car__img"
+            src="https://mc-astro.github.io/tesla-roadster-colors/img/black.jpg"
+            alt="Solid Black"
+    />
+    <p id="carTitle">Solid Black</p>
+    <div id="btnsContainer" class="btns__container">
+        <button class="btnColor" style="background: black"></button>
+        <button class="btnColor" style="background: red"></button>
+    </div>
+</section>
+
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script src="js/my.js"></script>
 </body>

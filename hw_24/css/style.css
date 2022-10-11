@@ -1,38 +1,23 @@
-body{
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    align-content: center;
+.container{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.car__img{
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.btns__container{
     display: flex;
+    justify-content: center;
+    margin: 0 auto;
 }
 
-.colors{
-    position: relative;
-    bottom: 25%;
-}
-
-span{
-    display: inline-block;
-    width: 50px;
-    height: 60px;
-}
-
-div{
-    float:left;
-}
-
-.dot {
-    cursor: pointer;
-    height: 35px;
-    width: 25px;
-    margin: 1px 2px;
-    background-color: #bbb;
-    border-radius: 2px;
-    display: inline-block;
-    transition: box-shadow 0.6s ease;
-}
-
-.car{
-    display: inline-block;
+.btns__container button{
+    margin: 0 5px;
     width: 30px;
+    height: 40px;
+    border: none;
 }
