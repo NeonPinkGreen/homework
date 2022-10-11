@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+}
+
+.colors{
+    position: absolute;
+    bottom: 25%;
+}
+
+span{
+    display: inline-block;
+    width: 50px;
+    height: 60px;
+}
+
+div{
+    width: 3em;
+}
+
+.car{
+    display: inline-block;
+    width: 30px;
+}
