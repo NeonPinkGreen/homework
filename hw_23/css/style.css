@@ -1,0 +1,19 @@
+td {
+    padding: 3px 8px;
+}
+
+td input {
+    display: block;
+    margin: 0 auto;
+}
+
+input {
+    padding: 3px 8px;
+}
+select {
+    padding: 3px 8px;
+}
+
+button {
+    padding: 3px 8px;
+}
