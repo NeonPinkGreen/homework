@@ -38,24 +38,31 @@ const generateTableHead = async (url, table) => {
     }
   }
 };
-const generateSelect = async (url, selectComics) => {
-  let data = await controller(url);
 
-  for (let element of data) {
-    for (let key in element) {
-      if (key === `name`) {
-        let option = document.createElement("option");
-        option.value = element[key];
-        option.innerText = element[key];
-        selectComics.appendChild(option);
-      }
-    }
-  }
+const generateSelect = async () => {
+  let data = await controller(API + `/universes`);
+  selectComics.innerHTML = data
+      .map(item => `<option value="${item.name}">${item.name}</option>`)
+      .join(``);
 };
 
-const generateTable = async (url, table) => {
+const renderHero = heroObject => {
+  let tr = document.createElement(`tr`);
+  let td = document.createElement()
+  let tbody = document.querySelector(`table tbody`);
+  tbody.append(tr);
+}
+
+const renderHeroes = async () => {
+  let heroes = await controller(API+`/heroes`);
+  heroes.forEach(hero => renderHero(hero));
+};
+
+
+
+const generateTable = async () => {
   let tBody = table.createTBody();
-  let data = await controller(url);
+  let data = await controller(API + `/heroes`);
 
   for (let element of data) {
     let row = tBody.insertRow();
@@ -94,8 +101,8 @@ const generateTable = async (url, table) => {
 
 let table = document.querySelector(`table`);
 
-generateSelect(API + `/universes`, selectComics).then();
-generateTable(API + `/heroes`, table).then();
+generateSelect().then();
+generateTable().then();
 generateTableHead(API + `/heroes`, table).then();
 
 let actionColumn = document.createElement(`thead`);
@@ -114,23 +121,15 @@ form.addEventListener(`submit`, async (event) => {
   const postObject = {
     name: inputName.value,
     comics: selectComics.value,
-    favourite: Boolean(favourite.value),
+    favourite: favourite.checked,
   };
 
-  let match = 1;
-  let data = await controller(API + `/heroes`);
-  for (let element of data) {
-    for (let key in element) {
-      if (element[key] === inputName.value) {
-        match = 0;
-      }
-    }
-  }
+  let heroes = await controller(API + `/heroes`);
+  let heroExist = heroes.find(item => item.name === postObject.name);
 
-  if (match) {
-    controller(API + `/heroes`, `POST`, postObject).then(() => {
-      location.reload();
-    });
+  if (!heroExist) {
+    let addedHero = await controller(API + `/heroes`, `POST`, postObject);
+    renderHero(addedHero);
   } else {
     console.log(`користувач з таким ім'ям вже є в базі`);
   }
