@@ -21,24 +21,6 @@ const controller = async (url, method = `GET`, obj) => {
   return response;
 };
 
-const generateTableHead = async (url, table) => {
-  let thead = table.createTHead();
-  let row = thead.insertRow();
-  const response = await controller(url);
-  let data = Object.keys(response[0]);
-  data.push(`action`);
-
-  for (let key of data) {
-    if (key === `id`) {
-    } else {
-      let th = document.createElement("th");
-      let text = document.createTextNode(key);
-      th.appendChild(text);
-      row.appendChild(th);
-    }
-  }
-};
-
 const generateSelect = async () => {
   let data = await controller(API + `/universes`);
   selectComics.innerHTML = data
@@ -48,8 +30,32 @@ const generateSelect = async () => {
 
 const renderHero = heroObject => {
   let tr = document.createElement(`tr`);
-  let td = document.createElement()
-  let tbody = document.querySelector(`table tbody`);
+  tr.innerHTML = `<td>${heroObject.name}</td>
+  <td>${heroObject.comics}</td>`;
+
+  const tdFav = document.createElement(`td`);
+  const inputFav = document.createElement(`input`);
+  inputFav.type = `checkbox`;
+  inputFav.checked = heroObject.favourite;
+  inputFav.addEventListener(`change`, async e => {
+    await controller(API+`/heroes/${heroObject.id}`, `PUT`, {favourite: e.target.checked});
+  })
+
+  tdFav.append(inputFav);
+
+  const tdDel = document.createElement(`td`);
+  const btnDel = document.createElement(`button`);
+  btnDel.innerHTML = `Remove`;
+  btnDel.addEventListener(`click`, async e => {
+    await controller(API+`/heroes/${heroObject.id}`, `DELETE`);
+    tr.remove();
+  })
+
+  tdDel.append(btnDel);
+
+  tr.append(tdFav, tdDel);
+
+  let tbody = document.querySelector(`table#heroes tbody`);
   tbody.append(tr);
 }
 
@@ -61,59 +67,19 @@ const renderHeroes = async () => {
 
 
 const generateTable = async () => {
-  let tBody = table.createTBody();
-  let data = await controller(API + `/heroes`);
+  const table = document.createElement(`table`);
+  table.id = `heroes`;
+  table.innerHTML = `<thead>
+      <tr>
+        <th>Name</th>
+        <th>Comics</th>
+        <th>Favourite</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody></tbody>`;
 
-  for (let element of data) {
-    let row = tBody.insertRow();
-    for (let key in element) {
-      if (key === `favourite`) {
-        let cell = row.insertCell();
-        let checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.id = `checkbox`;
-        checkbox.checked = element[key];
-        checkbox.addEventListener("change", function () {
-          if (this.checked) {
-            element[key] = true;
-            controller(API + `/heroes/` + element.id, `PUT`, element);
-          } else {
-            element[key] = false;
-            controller(API + `/heroes/` + element.id, `PUT`, element);
-          }
-        });
-        cell.appendChild(checkbox);
-      } else if (key === `id`) {
-      } else {
-        let cell = row.insertCell();
-        let text = document.createTextNode(element[key]);
-        cell.appendChild(text);
-      }
-    }
-    let cell = row.insertCell();
-    let button = document.createElement("button");
-    button.innerHTML = `Delete`;
-    button.id = element.id;
-    button.addEventListener("click", () => deleteHero(button));
-    cell.appendChild(button);
-  }
-};
-
-let table = document.querySelector(`table`);
-
-generateSelect().then();
-generateTable().then();
-generateTableHead(API + `/heroes`, table).then();
-
-let actionColumn = document.createElement(`thead`);
-table.append(actionColumn);
-
-const deleteHero = (button) => {
-  fetch(API + "/heroes/" + button.id, {
-    method: "DELETE",
-  })
-    .then((res) => res.text())
-    .then((res) => location.reload());
+  document.body.append(table);
 };
 
 form.addEventListener(`submit`, async (event) => {
@@ -134,3 +100,7 @@ form.addEventListener(`submit`, async (event) => {
     console.log(`користувач з таким ім'ям вже є в базі`);
   }
 });
+
+generateSelect().then();
+generateTable().then();
+renderHeroes().then();
