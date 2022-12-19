@@ -8,7 +8,7 @@ export default function useUsers () {
         (async () => {
             setUsers(await getUsers());
         })();
-    });
+    }, []);
 
     const deleteUser = async id => {
         await deleteItem(id);

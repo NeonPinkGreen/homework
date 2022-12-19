@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import useUsers from "../../hooks/useUsers";
+import { Link } from "react-router-dom";
 
 export default function UsersTable() {
   const { users, deleteUser } = useUsers();
@@ -24,7 +25,7 @@ export default function UsersTable() {
               <td>{user.address.street}</td>
               <td>{user.phone}</td>
               <td>
-                <button>Edit</button>
+                <Link to={"/" + user.id}>Edit</Link>
                 <button onClick={() => deleteUser(user.id)}>Delete</button>
               </td>
             </tr>

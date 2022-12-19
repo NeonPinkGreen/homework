@@ -1,9 +1,11 @@
-import React, {Fragment} from 'react'
+import React, { Fragment } from "react";
+import UserForm from "../components/Users/UserForm";
 
-export default function EditUser () {
-    return (
-        <Fragment>
-            EditUser
-        </Fragment>
-    )
+export default function EditUser() {
+  return (
+    <Fragment>
+      <h1>Edit User</h1>
+        <UserForm />
+    </Fragment>
+  );
 }
