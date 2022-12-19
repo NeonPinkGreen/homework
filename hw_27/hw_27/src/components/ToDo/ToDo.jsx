@@ -9,19 +9,23 @@ class ToDo extends Component {
   };
 
   transferToSecond() {
-    return this.state.secondList.unshift(this.state.firstList.shift());
+    this.state.secondList.unshift(this.state.firstList.shift());
+    this.setState(this.state);
   }
 
   transferToFirst() {
-    return this.state.firstList.unshift(this.state.secondList.shift());
+    this.state.firstList.unshift(this.state.secondList.shift());
+    this.setState(this.state);
   }
 
   transferToThird() {
-    return this.state.thirdList.unshift(this.state.secondList.shift());
+    this.state.thirdList.unshift(this.state.secondList.shift());
+    this.setState(this.state);
   }
 
   removeLastItem() {
-    return this.state.thirdList.splice(this.state.thirdList.length - 1, 1);
+    this.state.thirdList.splice(this.state.thirdList.length - 1, 1);
+    this.setState(this.state);
   }
 
   render() {
@@ -30,19 +34,33 @@ class ToDo extends Component {
         <List
           list={this.state.firstList}
           actions={[
-            { text: "Transfer first to right", action: this.transferToSecond },
+            {
+              text: "Transfer first to right",
+              action: this.transferToSecond.bind(this),
+            },
           ]}
         />
         <List
           list={this.state.secondList}
           actions={[
-            { text: "Transfer first to left", action: this.transferToFirst },
-            { text: "Transfer first to right", action: this.transferToThird },
+            {
+              text: "Transfer first to left",
+              action: this.transferToFirst.bind(this),
+            },
+            {
+              text: "Transfer first to right",
+              action: this.transferToThird.bind(this),
+            },
           ]}
         />
         <List
           list={this.state.thirdList}
-          actions={[{ text: "Remove last item", action: this.removeLastItem }]}
+          actions={[
+            {
+              text: "Remove last item",
+              action: this.removeLastItem.bind(this),
+            },
+          ]}
         />
       </div>
     );

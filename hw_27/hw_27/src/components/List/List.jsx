@@ -12,7 +12,7 @@ class List extends Component {
         <div className="buttons">
           {this.props.list.length
             ? this.props.actions.map((item, key) => (
-                <button onClick={item.action} key={key}>
+                <button onClick={() => item.action()} key={key}>
                   {item.text}
                 </button>
               ))
