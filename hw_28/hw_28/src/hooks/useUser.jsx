@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUser } from "../Services/userService";
+import { getUser, updateUser } from "../Services/userService";
 
 export default function useUser(userId) {
   const [user, setUser] = useState({});
@@ -10,9 +10,13 @@ export default function useUser(userId) {
     })();
   }, []);
 
-  const changeName = (e) => {
-    setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+  const changeInput = (option, value) => {
+    setUser((prevState) => ({ ...prevState, [option]: value }));
   };
 
-  return { user, changeName };
+  const changeUser = async () => {
+    await updateUser(user.id, user);
+  }
+
+  return { user, changeInput, changeUser };
 }
