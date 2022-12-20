@@ -1,4 +1,4 @@
-const API = "https://jsonplaceholder.typicode.com/users";
+const API = "https://63a22b00a543280f776a73b0.mockapi.io/dash/dash";
 
 export const getUsers = () => fetch(API).then((data) => data.json());
 
