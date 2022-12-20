@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUser, updateUser } from "../Services/userService";
+import { getUser, updateUser, addUser } from "../Services/userService";
 
 export default function useUser(userId) {
   const [user, setUser] = useState({});
@@ -16,7 +16,11 @@ export default function useUser(userId) {
 
   const changeUser = async () => {
     await updateUser(user.id, user);
-  }
+  };
 
-  return { user, changeInput, changeUser };
+  const createUser = async () => {
+    await addUser(user);
+  };
+
+  return { user, changeInput, createUser, changeUser };
 }

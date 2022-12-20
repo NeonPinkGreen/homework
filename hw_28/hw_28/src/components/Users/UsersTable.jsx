@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import useUsers from "../../hooks/useUsers";
-import { Link } from "react-router-dom";
+import UsersTableItem from "./UsersTableItem";
 
 export default function UsersTable() {
   const { users, deleteUser } = useUsers();
@@ -19,16 +19,7 @@ export default function UsersTable() {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.address.street}</td>
-              <td>{user.phone}</td>
-              <td>
-                <Link to={"/" + user.id}>Edit</Link>
-                <button onClick={() => deleteUser(user.id)}>Delete</button>
-              </td>
-            </tr>
+              <UsersTableItem key={user.id} user={user} deleteUser={deleteUser} />
           ))}
         </tbody>
       </table>

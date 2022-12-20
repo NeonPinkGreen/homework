@@ -1,6 +1,6 @@
 import React from "react";
 import useUser from "../../hooks/useUser";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function UserForm({ createUser }) {
   const { userId } = useParams();
@@ -11,12 +11,17 @@ export default function UserForm({ createUser }) {
     changeUser: change,
   } = useUser(userId);
 
+  const navigation = useNavigate();
+
   const changeFormInput = (e) => changeInput(e.target.name, e.target.value);
 
-  const submitForm = (e) => {
+  const submitForm = async e => {
     e.preventDefault();
-    createUser ? create() : change();
+    createUser ? await create() : await change();
+      navigation("/");
   };
+
+  const cancelBtn = () => navigation("/");
 
   return (
     <form onSubmit={submitForm}>
@@ -58,7 +63,7 @@ export default function UserForm({ createUser }) {
       </label>
       <div>
         <button>{createUser ? "Create user" : "Save changes"}</button>
-        <Link to="/">Back to dashboard </Link>
+        <button type="button" onClick={cancelBtn}>Cancel</button>
       </div>
     </form>
   );
