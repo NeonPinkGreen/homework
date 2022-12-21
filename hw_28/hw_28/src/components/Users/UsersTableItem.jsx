@@ -1,17 +1,35 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
 
-export default function UsersTableItem({user, deleteUser}) {
-    return(
-        <tr>
-            <td>{user.name}</td>
-            <td>{user.email}</td>
-            <td>{user.address}</td>
-            <td>{user.phone}</td>
-            <td>
-                <Link to={"/" + user.id}>Edit</Link>
-                <button onClick={() => deleteUser(user.id)}>Delete</button>
-            </td>
-        </tr>
-    )
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from '@mui/icons-material/Edit';
+import Stack from "@mui/material/Stack";
+
+export default function UsersTableItem({ user, deleteUser }) {
+  return (
+    <TableRow>
+      <TableCell>{user.name}</TableCell>
+      <TableCell>{user.email}</TableCell>
+      <TableCell>{user.address}</TableCell>
+      <TableCell>{user.phone}</TableCell>
+      <TableCell>
+        <Stack direction="row" spacing={2}>
+          <Button
+            component={Link}
+            to={"/" + user.id}
+            variant="contained"
+            endIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
+          <Button onClick={() => deleteUser(user.id)} variant="outlined" startIcon={<DeleteIcon />}>
+            Delete
+          </Button>
+        </Stack>
+      </TableCell>
+    </TableRow>
+  );
 }
