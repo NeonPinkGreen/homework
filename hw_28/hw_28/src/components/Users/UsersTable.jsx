@@ -15,7 +15,7 @@ export default function UsersTable() {
 
   return (
     <Fragment>
-      <TableContainer component={Paper} sx={{mb: 5}}>
+      <TableContainer component={Paper} sx={{ mb: 5 }}>
         <Table>
           <TableHead>
             <TableRow>

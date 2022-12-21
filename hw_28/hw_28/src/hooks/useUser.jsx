@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import { getUser, updateUser, addUser } from "../Services/userService";
 
 export default function useUser(userId) {
-  const [user, setUser] = useState({});
+  const EMPTY_USER = {
+    name: "",
+    email: "",
+    address: "",
+    phone: "",
+  };
+  const [user, setUser] = useState( EMPTY_USER );
 
   useEffect(() => {
     (async () => {

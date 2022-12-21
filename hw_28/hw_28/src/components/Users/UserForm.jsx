@@ -1,6 +1,12 @@
 import React from "react";
 import useUser from "../../hooks/useUser";
 import { useParams, useNavigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
+import Stack from "@mui/material/Stack";
+
+import Box from "@mui/material/Box";
 
 export default function UserForm({ createUser }) {
   const { userId } = useParams();
@@ -15,56 +21,70 @@ export default function UserForm({ createUser }) {
 
   const changeFormInput = (e) => changeInput(e.target.name, e.target.value);
 
-  const submitForm = async e => {
+  const submitForm = async (e) => {
     e.preventDefault();
     createUser ? await create() : await change();
-      navigation("/");
+    navigation("/");
   };
 
   const cancelBtn = () => navigation("/");
 
   return (
-    <form onSubmit={submitForm}>
-      <label>
-        Name{" "}
-        <input
-          type="text"
-          name="name"
-          defaultValue={user.name}
-          onBlur={changeFormInput}
-        />
-      </label>
-      <label>
-        Email{" "}
-        <input
-          type="email"
-          name="email"
-          defaultValue={user.email}
-          onBlur={changeFormInput}
-        />
-      </label>
-      <label>
-        Address{" "}
-        <input
-          type="text"
-          name="address"
-          defaultValue={user.address}
-          onBlur={changeFormInput}
-        />
-      </label>
-      <label>
-        Phone{" "}
-        <input
-          type="phone"
-          name="phone"
-          defaultValue={user.phone}
-          onBlur={changeFormInput}
-        />
-      </label>
+    <Box
+      component="form"
+      autoComplete="off"
+      sx={{
+        "& .MuiTextField-root": { m: 1, width: "inherit" },
+        my: "auto",
+        width: "30ch",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+      onSubmit={submitForm}
+    >
+      <TextField
+        required
+        name="name"
+        label="Name"
+        value={user.name}
+        defaultValue={user.name ? user.name : ''}
+        onBlur={changeFormInput}
+      />
+      <TextField
+        required
+        type="email"
+        name="email"
+        label="Email"
+        value={user.email}
+        onBlur={changeFormInput}
+      />
+      <TextField
+        required
+        type="phone"
+        name="address"
+        label="Address"
+        value={user.address}
+        onBlur={changeFormInput}
+      />
+      <TextField
+        required
+        name="phone"
+        label="Phone"
+        value={user.phone}
+        onBlur={changeFormInput}
+      />
       <div>
-        <button>{createUser ? "Create user" : "Save changes"}</button>
-        <button type="button" onClick={cancelBtn}>Cancel</button>
+        <Stack direction="row" spacing={2}>
+          <Button type="submit" variant="contained" endIcon={<SendIcon />}>
+            {createUser ? "Create user" : "Save changes"}
+          </Button>
+          <Button variant="outlined" onClick={cancelBtn}>
+            Cancel
+          </Button>
+        </Stack>
       </div>
-    </form>
+    </Box>
   );
 }

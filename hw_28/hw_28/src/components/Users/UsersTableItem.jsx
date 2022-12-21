@@ -5,7 +5,7 @@ import TableCell from "@mui/material/TableCell";
 
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 import Stack from "@mui/material/Stack";
 
 export default function UsersTableItem({ user, deleteUser }) {
@@ -25,7 +25,11 @@ export default function UsersTableItem({ user, deleteUser }) {
           >
             Edit
           </Button>
-          <Button onClick={() => deleteUser(user.id)} variant="outlined" startIcon={<DeleteIcon />}>
+          <Button
+            onClick={() => deleteUser(user.id)}
+            variant="outlined"
+            startIcon={<DeleteIcon />}
+          >
             Delete
           </Button>
         </Stack>
