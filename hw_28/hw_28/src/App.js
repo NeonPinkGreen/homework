@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import EditUser from "./pages/EditUser";
+import Users from "./pages/Users";
+import User from "./pages/User";
 import CreateUser from "./pages/CreateUser";
 import Container from "@mui/material/Container";
 
@@ -10,9 +10,9 @@ export default function App() {
     <Container maxWidth="md">
       <BrowserRouter>
         <Routes>
-          <Route path={"/"} element={<Dashboard />} />
-          <Route path={"/:userId"} element={<EditUser />} />
-          <Route path={"/create"} element={<CreateUser />} />
+          <Route path={"/"} element={<Users />} />
+          <Route path={"/:userId"} element={<User />} />
+          <Route path={"/createuser"} element={<CreateUser />} />
         </Routes>
       </BrowserRouter>
     </Container>

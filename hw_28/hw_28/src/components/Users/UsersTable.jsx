@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import useUsers from "../../hooks/useUsers";
 import UsersTableItem from "./UsersTableItem";
-
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -20,9 +19,6 @@ export default function UsersTable() {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Address</TableCell>
-              <TableCell>Phone</TableCell>
               <TableCell>Action</TableCell>
             </TableRow>
           </TableHead>

@@ -12,9 +12,6 @@ export default function UsersTableItem({ user, deleteUser }) {
   return (
     <TableRow>
       <TableCell>{user.name}</TableCell>
-      <TableCell>{user.email}</TableCell>
-      <TableCell>{user.address}</TableCell>
-      <TableCell>{user.phone}</TableCell>
       <TableCell>
         <Stack direction="row" spacing={2}>
           <Button
