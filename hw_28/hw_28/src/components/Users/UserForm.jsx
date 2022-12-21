@@ -48,8 +48,7 @@ export default function UserForm({ createUser }) {
         required
         name="name"
         label="Name"
-        value={user.name}
-        defaultValue={user.name ? user.name : ''}
+        defaultValue={user.name}
         onBlur={changeFormInput}
       />
       <TextField
@@ -57,7 +56,7 @@ export default function UserForm({ createUser }) {
         type="email"
         name="email"
         label="Email"
-        value={user.email}
+        defaultValue={user.email}
         onBlur={changeFormInput}
       />
       <TextField
@@ -65,14 +64,14 @@ export default function UserForm({ createUser }) {
         type="phone"
         name="address"
         label="Address"
-        value={user.address}
+        defaultValue={user.address}
         onBlur={changeFormInput}
       />
       <TextField
         required
         name="phone"
         label="Phone"
-        value={user.phone}
+        defaultValue={user.phone}
         onBlur={changeFormInput}
       />
       <div>
