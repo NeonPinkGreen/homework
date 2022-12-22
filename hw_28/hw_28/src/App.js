@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 
 export default function App() {
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="sm">
       <BrowserRouter>
         <Routes>
           <Route path={"/"} element={<Users />} />
