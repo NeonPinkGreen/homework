@@ -1,0 +1,23 @@
+.ToDo {
+    display: flex;
+    gap: 24px;
+    & > div {
+        border: 1px black solid;
+        border-radius: 4px;
+        padding: 10px;
+        display:flex;
+        flex-flow: column;
+        justify-content: end;
+        gap: 16px;
+
+        & ul {
+            margin: 0;
+        }
+
+        & .buttons{
+            display:flex;
+            gap: 8px;
+        }
+    }
+
+}
